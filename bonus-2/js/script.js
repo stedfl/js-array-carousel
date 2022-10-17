@@ -4,14 +4,14 @@ const imageArray = [
   "03.jpg",
   "04.jpg",
   "05.jpg",
-]
+];
 
 let imagesTags = "";
 const sliderBox = document.getElementById("items-wrapper");
 for (let i = 0; i < imageArray.length; i++) {
   imagesTags += `
   <img class="item" src="img/${imageArray[i]}" alt="${imageArray[i]}"</img>
-   `
+  `;
 }
 sliderBox.innerHTML = imagesTags;
 
@@ -20,7 +20,7 @@ let thumbTags = "";
 for (let i = 0; i < imageArray.length; i++) {
   thumbTags += `
   <img class="thumb-item" src="img/${imageArray[i]}" alt="${imageArray[i]}"</img>
-   `
+  `;
 }
 thumbBox.innerHTML = thumbTags;
 
@@ -42,7 +42,6 @@ btnDown.addEventListener("click", function() {
     thumbList[counterImages].classList.add("thumb-active");
     imagesList[imagesList.length - 1].classList.remove("active");
     thumbList[imagesList.length - 1].classList.remove("thumb-active");
-    
   } else {
     imagesList[counterImages].classList.remove("active");
     thumbList[counterImages].classList.remove("thumb-active");
@@ -59,9 +58,9 @@ btnUp.addEventListener("click", function() {
     imagesList[0].classList.remove("active");
     thumbList[0].classList.remove("thumb-active");
   } else {
-  imagesList[counterImages].classList.remove("active");
-  thumbList[counterImages].classList.remove("thumb-active");
-  imagesList[--counterImages].classList.add("active");
-  thumbList[counterImages].classList.add("thumb-active");
+    imagesList[counterImages].classList.remove("active");
+    thumbList[counterImages].classList.remove("thumb-active");
+    imagesList[--counterImages].classList.add("active");
+    thumbList[counterImages].classList.add("thumb-active");
   }
 })

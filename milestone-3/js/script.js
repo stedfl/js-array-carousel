@@ -4,7 +4,7 @@ const imageArray = [
   "03.jpg",
   "04.jpg",
   "05.jpg",
-]
+];
 
 let imagesTags = "";
 const sliderBox = document.getElementById("items-wrapper");
@@ -14,7 +14,7 @@ for (let i = 0; i < imageArray.length; i++) {
   <img class="item" src="img/${imageArray[i]}" alt="${imageArray[i]}"</img>
    `
 }
-console.log(imagesTags);
+
 sliderBox.innerHTML = imagesTags;
 
 imagesList = document.getElementsByClassName("item");
@@ -30,8 +30,8 @@ btnDown.addEventListener("click", function() {
     imagesList[counterImages].classList.add("active");
     imagesList[imagesList.length - 1].classList.remove("active");
   } else {
-  imagesList[counterImages].classList.remove("active");
-  imagesList[++counterImages].classList.add("active");
+    imagesList[counterImages].classList.remove("active");
+    imagesList[++counterImages].classList.add("active");
   }
 })
 
@@ -41,7 +41,7 @@ btnUp.addEventListener("click", function() {
     imagesList[counterImages].classList.add("active");
     imagesList[0].classList.remove("active");
   } else {
-  imagesList[counterImages].classList.remove("active");
-  imagesList[--counterImages].classList.add("active");
+    imagesList[counterImages].classList.remove("active");
+    imagesList[--counterImages].classList.add("active");
   }
 })
