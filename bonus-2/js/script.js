@@ -35,7 +35,7 @@ thumbList[counterImages].classList.add("thumb-active");
 const btnUp = document.querySelector(".btn-arrow.up");
 const btnDown = document.querySelector(".btn-arrow.down");
 
-btnUp.addEventListener("click", function() {
+btnDown.addEventListener("click", function() {
   if (counterImages === (imagesList.length - 1)) {
     counterImages = 0;
     imagesList[counterImages].classList.add("active");
@@ -51,7 +51,7 @@ btnUp.addEventListener("click", function() {
   }
 })
 
-btnDown.addEventListener("click", function() {
+btnUp.addEventListener("click", function() {
   if (counterImages === 0) {
     counterImages = imagesList.length - 1;
     imagesList[counterImages].classList.add("active");
