@@ -25,23 +25,21 @@ const btnUp = document.querySelector(".btn-arrow.up");
 const btnDown = document.querySelector(".btn-arrow.down");
 
 btnDown.addEventListener("click", function() {
-  if (counterImages === (imagesList.length - 1)) {
+  imagesList[counterImages].classList.remove("active");
+  thumbList[counterImages++].classList.remove("thumb-active");
+  if (counterImages >= imagesList.length) {
     counterImages = 0;
-    imagesList[counterImages].classList.add("active");
-    imagesList[imagesList.length - 1].classList.remove("active");
-  } else {
-    imagesList[counterImages].classList.remove("active");
-    imagesList[++counterImages].classList.add("active");
   }
+  imagesList[counterImages].classList.add("active");
+  thumbList[counterImages].classList.add("thumb-active");
 })
 
 btnUp.addEventListener("click", function() {
-  if (counterImages === 0) {
-    counterImages = imagesList.length - 1;
-    imagesList[counterImages].classList.add("active");
-    imagesList[0].classList.remove("active");
-  } else {
-    imagesList[counterImages].classList.remove("active");
-    imagesList[--counterImages].classList.add("active");
+  imagesList[counterImages].classList.remove("active");
+  thumbList[counterImages--].classList.remove("thumb-active");
+  if (counterImages < 0 ) {
+    counterImages = (imagesList.length - 1);
   }
+  imagesList[counterImages].classList.add("active");
+  thumbList[counterImages].classList.add("thumb-active");
 })
