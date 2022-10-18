@@ -8,49 +8,64 @@ const imageArray = [
 
 let imagesTags = "";
 const sliderBox = document.getElementById("items-wrapper");
+const thumbBox = document.querySelector(".thumb-slider");
 for (let i = 0; i < imageArray.length; i++) {
   imagesTags += `
-  <img class="item" src="img/${imageArray[i]}" alt="${imageArray[i]}"</img>
+  <img class="" src="img/${imageArray[i]}" alt="${imageArray[i]}"</img>
   `;
 }
 sliderBox.innerHTML = imagesTags;
+thumbBox.innerHTML = imagesTags;
 
-const thumbBox = document.querySelector(".thumb-slider");
-let thumbTags = "";
-for (let i = 0; i < imageArray.length; i++) {
-  thumbTags += `
-  <img class="thumb-item" src="img/${imageArray[i]}" alt="${imageArray[i]}"</img>
-  `;
-}
-thumbBox.innerHTML = thumbTags;
-
-
-imagesList = document.getElementsByClassName("item");
-thumbList = document.getElementsByClassName("thumb-item");
+imagesList = document.querySelectorAll("#items-wrapper img");
+thumbList = document.querySelectorAll(".thumb-slider img");
 let counterImages = 0;
 imagesList[counterImages].classList.add("active");
-thumbList[counterImages].classList.add("thumb-active");
+thumbList[counterImages].classList.add("active");
 
 
 const btnUp = document.querySelector(".btn-arrow.up");
 const btnDown = document.querySelector(".btn-arrow.down");
 
+// MODALITÀ COMPATTA CON MODULO E FUNZIONE
 btnDown.addEventListener("click", function() {
-  imagesList[counterImages].classList.remove("active");
-  thumbList[counterImages++].classList.remove("thumb-active");
-  if (counterImages >= imagesList.length) {
-    counterImages = 0;
-  }
-  imagesList[counterImages].classList.add("active");
-  thumbList[counterImages].classList.add("thumb-active");
-})
+  slider("down");
+});
 
 btnUp.addEventListener("click", function() {
+  slider("up");
+});
+
+function slider(direction) {
   imagesList[counterImages].classList.remove("active");
-  thumbList[counterImages--].classList.remove("thumb-active");
-  if (counterImages < 0 ) {
-    counterImages = (imagesList.length - 1);
-  }
+  thumbList[counterImages].classList.remove("active");
+  if (direction === "up") {
+    counterImages--;
+  } else {
+    counterImages++;
+  } 
+  counterImages = ((counterImages + imagesList.length) % imagesList.length);
   imagesList[counterImages].classList.add("active");
-  thumbList[counterImages].classList.add("thumb-active");
-})
+  thumbList[counterImages].classList.add("active");
+}
+
+// // MODALITÀ ESTESA SENZA MODULO E FUNZIONE
+// btnDown.addEventListener("click", function() {
+//   imagesList[counterImages].classList.remove("active");
+//   thumbList[counterImages++].classList.remove("active");
+//   if (counterImages >= imagesList.length) {
+//     counterImages = 0;
+//   }
+//   imagesList[counterImages].classList.add("active");
+//   thumbList[counterImages].classList.add("active");
+// })
+
+// btnUp.addEventListener("click", function() {
+//   imagesList[counterImages].classList.remove("active");
+//   thumbList[counterImages--].classList.remove("active");
+//   if (counterImages < 0 ) {
+//     counterImages = (imagesList.length - 1);
+//   }
+//   imagesList[counterImages].classList.add("active");
+//   thumbList[counterImages].classList.add("active");
+// })
